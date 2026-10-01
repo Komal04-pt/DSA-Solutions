@@ -5,8 +5,8 @@ public:
         vector<vector<int>> adj(numCourses);
 
         for(auto &pre: prerequisites){
-            indegree[pre[1]]++;
-            adj[pre[0]].push_back(pre[1]);
+            indegree[pre[0]]++;
+            adj[pre[1]].push_back(pre[0]);
         }
 
         queue<int> q;
@@ -21,7 +21,7 @@ public:
         while(!q.empty()){
             int node = q.front();
             q.pop();
-            output[numCourses-finish-1] = node;
+            output[finish] = node;
             finish++;
 
             for(int nei: adj[node]){
